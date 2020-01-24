@@ -5,6 +5,9 @@
     line-height: 38px
     margin-bottom: 40px
     margin-left: auto
+    &-swbtn
+        color: green
+        +bold
     &__swbtn
 .switch-btn 
     display: inline-block
@@ -41,7 +44,7 @@
         display: flex
         justify-content: space-between
         flex-wrap: wrap
-             
+                 
         &__item
             flex-basis: 32%
             text-align: center
@@ -51,6 +54,7 @@
             text-transform: uppercase
             text-decoration: none
             padding-top: 10px
+            border-radius: 10px
             box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
             hr
                 border: none
@@ -107,7 +111,9 @@
                 background: url('../img/features/path7.png') no-repeat
     &__link        
         text-decoration: none
-        color: $text-color        
+        color: $text-color 
+    &__sale
+        background: url('../img/features/icon-aktsiya.png') no-repeat right top       
 
         
             

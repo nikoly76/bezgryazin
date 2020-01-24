@@ -258,6 +258,11 @@ img {
   margin-left: auto;
 }
 
+.switch-swbtn {
+  color: green;
+  font-family: 'Comfortaa Bold', sans-serif;
+}
+
 .switch-btn {
   display: inline-block;
   width: 72px;
@@ -319,6 +324,7 @@ img {
   text-transform: uppercase;
   text-decoration: none;
   padding-top: 10px;
+  border-radius: 10px;
   -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 }
@@ -396,5 +402,9 @@ img {
 .features__link {
   text-decoration: none;
   color: #262626;
+}
+
+.features__sale {
+  background: url("../img/features/icon-aktsiya.png") no-repeat right top;
 }
 /*# sourceMappingURL=style.css.map */
