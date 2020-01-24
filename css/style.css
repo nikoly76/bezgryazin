@@ -67,6 +67,7 @@ img {
   background-color: #fff;
   text-decoration: none;
   border-radius: 25px;
+  visibility: hidden;
 }
 
 .button {
@@ -259,7 +260,7 @@ img {
 }
 
 .switch-swbtn {
-  color: green;
+  color: #018644;
   font-family: 'Comfortaa Bold', sans-serif;
 }
 
@@ -268,7 +269,7 @@ img {
   width: 72px;
   height: 38px;
   border-radius: 19px;
-  background: #bfbfbf;
+  background: #018644;
   z-index: 0;
   margin: 0;
   padding: 0;
@@ -294,7 +295,7 @@ img {
 }
 
 .switch-on {
-  background: #118c4e;
+  background: #FDAF17;
 }
 
 .switch-on::after {
@@ -334,6 +335,67 @@ img {
   height: 3px;
   color: rgba(0, 0, 0, 0.1);
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.features-block__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  font-family: 'Comfortaa Bold', sans-serif;
+  background-color: #01864533;
+}
+
+.features-block__list-small {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  color: #7b7b79;
+  font-size: 15px;
+  min-height: 35px;
+}
+
+.features-block__list-small:hover {
+  background-color: #f1f1f1;
+}
+
+.features-block__column-1 {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  padding-left: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.features-block__column-1 h3 {
+  margin: 0.5em;
+}
+
+.features-block__column-1 p {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.features-block__column-2 {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  min-width: 170px;
+  text-align: center;
+}
+
+.features-block__column-2 p {
+  font-size: 12px;
+  margin: 0;
+}
+
+.features-block .fbc-2s {
+  color: #018644;
+  font-size: 20px;
 }
 
 .features-block__text {
@@ -406,5 +468,19 @@ img {
 
 .features__sale {
   background: url("../img/features/icon-aktsiya.png") no-repeat right top;
+}
+
+.row {
+  display: none;
+  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.row hr {
+  border: none;
+  width: 100%;
+  height: 3px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 /*# sourceMappingURL=style.css.map */
