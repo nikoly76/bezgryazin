@@ -1,0 +1,113 @@
+.switch
+    display: flex
+    justify-content: space-between
+    width: 350px
+    line-height: 38px
+    margin-bottom: 40px
+    margin-left: auto
+    &__swbtn
+.switch-btn 
+    display: inline-block
+    width: 72px
+    height: 38px
+    border-radius: 19px
+    background: #bfbfbf
+    z-index: 0
+    margin: 0
+    padding: 0
+    border: none
+    cursor: pointer
+    position: relative
+    transition-duration: 300ms
+.switch-btn::after 
+    content: ""
+    height: 32px
+    width: 32px
+    border-radius: 17px
+    background: #fff
+    top: 3px
+    left: 3px
+    transition-duration: 300ms
+    position: absolute
+    z-index: 1
+.switch-on 
+    background: #118c4e
+
+.switch-on::after 
+    left: 37px
+
+.features    
+    &-block
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+             
+        &__item
+            flex-basis: 32%
+            text-align: center
+            justify-content: space-between
+            margin-bottom: 100px
+            +bold
+            text-transform: uppercase
+            text-decoration: none
+            padding-top: 10px
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+            hr
+                border: none
+                height: 3px
+                color: rgba(0, 0, 0, 0.1)
+                background-color: rgba(0, 0, 0, 0.1) 
+         
+        &__text
+            font-size: 18px
+            +bold
+            margin-top: 20px
+            white-space: nowrap
+        &__subtitle
+            text-transform: lowercase
+            +light
+            span
+                font-size: 30px
+                +bold
+        &__more
+            text-align: left
+            padding: 15px
+            font-variant: small-caps
+            ul, li
+                color: $text-color-light
+                font-size: 14px
+                text-transform: lowercase
+                font-variant: normal
+                line-height: 16px
+        &-icon
+            text-transform: lowercase
+            font-variant: normal
+            color: $text-color-light
+            font-size: 14px
+            line-height: 32px
+            i
+                display: inline-block
+                vertical-align: top
+                width: 32px
+                height: 32px
+                margin-right: 5px
+            
+        &__icon
+            i
+                background: url('../img/features/s_icon.png') left top
+                
+        &__icon-s
+            i
+                background: url('../img/features/path9.png') no-repeat
+        &__icon-o
+            i
+                background: url('../img/features/path8.png') no-repeat
+        &__icon-i
+            i
+                background: url('../img/features/path7.png') no-repeat
+    &__link        
+        text-decoration: none
+        color: $text-color        
+
+        
+            
