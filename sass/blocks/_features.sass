@@ -1,10 +1,96 @@
+.menu
+    &-uslugi
+        display: flex
+        justify-content: space-between
+        margin-top: 40px
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+        ul
+            list-style: none
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+        li
+            display: block
+            width: 350px
+            height: 35px
+            overflow: hidden
+            font-size: 16px
+            line-height: 16px
+            padding: 7px
+            margin-top: 5px
+            
+            
+            &:hover
+                background-color: $bg-secondary
+            a
+                text-decoration: none
+                padding: 5px 0 0 43px
+                width: 350px
+                height: 27px
+                color: $text-color
+                +bold
+                &:hover
+                    color: #FDAF17
+        &__fz-1
+            background: url('../img/features/uslugi/mini_fiz_service_1.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-2
+            background: url('../img/features/uslugi/mini_fiz_service_2.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-3
+            background: url('../img/features/uslugi/mini_fiz_service_3.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-4
+            background: url('../img/features/uslugi/mini_fiz_service_4.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-5
+            background: url('../img/features/uslugi/mini_fiz_service_5.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-6
+            background: url('../img/features/uslugi/mini_fiz_service_8.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-7
+            background: url('../img/features/uslugi/mini_fiz_service_7.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-8
+            background: url('../img/features/uslugi/mini_fiz_service_14.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-9
+            background: url('../img/features/uslugi/mini_fiz_service_15.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-10
+            background: url('../img/features/uslugi/mini_fiz_service_6.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-11
+            background: url('../img/features/uslugi/mini_fiz_service_9.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+        &__fz-12
+            background: url('../img/features/uslugi/mini_fiz_service_10.png') no-repeat
+            &:hover
+                background-position: 0 -35px
+.switch-block
+    display: flex
+    justify-content: center
+    text-align: center
 .switch
     display: flex
     justify-content: space-between
     width: 350px
     line-height: 38px
+    margin-top: 40px
     margin-bottom: 40px
-    margin-left: auto
+    
     &-swbtn
         color: $primary
         +bold
@@ -55,7 +141,6 @@
             text-transform: uppercase
             text-decoration: none
             padding-top: 10px
-            border-radius: 10px
             box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
             hr
                 border: none
@@ -151,7 +236,7 @@
         text-decoration: none
         color: $text-color 
     &__sale
-        background: url('../img/features/icon-aktsiya.png') no-repeat right top       
+        background: url('../img/features/icon-aktsiya.png') no-repeat left top       
 
 .row
     display: none

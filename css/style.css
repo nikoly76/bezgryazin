@@ -8,6 +8,25 @@
   margin: auto;
 }
 
+@media (max-width: 1199px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 991px) {
+  .container {
+    max-width: 750px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+}
+
 @font-face {
   font-family: 'Comfortaa Light';
   src: url("../fonts/Comfortaa-Light.eot");
@@ -196,6 +215,36 @@ img {
   margin: 2px 0;
 }
 
+@media (max-width: 991px) {
+  .navbar__mobile, .navbar__landline {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo {
+    display: none;
+  }
+  .menu {
+    top: 80px;
+  }
+  .menu-button {
+    height: 60px;
+  }
+  .menu__nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .menu__link {
+    margin-bottom: 20px;
+  }
+}
+
 .hero {
   background: #F2F3F5 url("../img/hero/slide01.jpg") no-repeat right top 0;
   background-size: cover;
@@ -234,6 +283,12 @@ img {
   margin-bottom: 60px;
 }
 
+@media (max-width: 768px) {
+  .hero__text {
+    width: 99%;
+  }
+}
+
 .subhero {
   display: block;
   width: 100%;
@@ -246,6 +301,164 @@ img {
           box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
 }
 
+.menu-uslugi {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 40px;
+  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-uslugi ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.menu-uslugi li {
+  display: block;
+  width: 350px;
+  height: 35px;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 7px;
+  margin-top: 5px;
+}
+
+.menu-uslugi li:hover {
+  background-color: #f1f1f1;
+}
+
+.menu-uslugi li a {
+  text-decoration: none;
+  padding: 5px 0 0 43px;
+  width: 350px;
+  height: 27px;
+  color: #262626;
+  font-family: 'Comfortaa Bold', sans-serif;
+}
+
+.menu-uslugi li a:hover {
+  color: #FDAF17;
+}
+
+.menu-uslugi__fz-1 {
+  background: url("../img/features/uslugi/mini_fiz_service_1.png") no-repeat;
+}
+
+.menu-uslugi__fz-1:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-2 {
+  background: url("../img/features/uslugi/mini_fiz_service_2.png") no-repeat;
+}
+
+.menu-uslugi__fz-2:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-3 {
+  background: url("../img/features/uslugi/mini_fiz_service_3.png") no-repeat;
+}
+
+.menu-uslugi__fz-3:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-4 {
+  background: url("../img/features/uslugi/mini_fiz_service_4.png") no-repeat;
+}
+
+.menu-uslugi__fz-4:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-5 {
+  background: url("../img/features/uslugi/mini_fiz_service_5.png") no-repeat;
+}
+
+.menu-uslugi__fz-5:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-6 {
+  background: url("../img/features/uslugi/mini_fiz_service_8.png") no-repeat;
+}
+
+.menu-uslugi__fz-6:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-7 {
+  background: url("../img/features/uslugi/mini_fiz_service_7.png") no-repeat;
+}
+
+.menu-uslugi__fz-7:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-8 {
+  background: url("../img/features/uslugi/mini_fiz_service_14.png") no-repeat;
+}
+
+.menu-uslugi__fz-8:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-9 {
+  background: url("../img/features/uslugi/mini_fiz_service_15.png") no-repeat;
+}
+
+.menu-uslugi__fz-9:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-10 {
+  background: url("../img/features/uslugi/mini_fiz_service_6.png") no-repeat;
+}
+
+.menu-uslugi__fz-10:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-11 {
+  background: url("../img/features/uslugi/mini_fiz_service_9.png") no-repeat;
+}
+
+.menu-uslugi__fz-11:hover {
+  background-position: 0 -35px;
+}
+
+.menu-uslugi__fz-12 {
+  background: url("../img/features/uslugi/mini_fiz_service_10.png") no-repeat;
+}
+
+.menu-uslugi__fz-12:hover {
+  background-position: 0 -35px;
+}
+
+.switch-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
 .switch {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -255,8 +468,8 @@ img {
           justify-content: space-between;
   width: 350px;
   line-height: 38px;
+  margin-top: 40px;
   margin-bottom: 40px;
-  margin-left: auto;
 }
 
 .switch-swbtn {
@@ -325,7 +538,6 @@ img {
   text-transform: uppercase;
   text-decoration: none;
   padding-top: 10px;
-  border-radius: 10px;
   -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 }
@@ -467,7 +679,7 @@ img {
 }
 
 .features__sale {
-  background: url("../img/features/icon-aktsiya.png") no-repeat right top;
+  background: url("../img/features/icon-aktsiya.png") no-repeat left top;
 }
 
 .row {

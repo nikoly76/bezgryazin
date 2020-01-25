@@ -58,3 +58,19 @@
             height: 3px
             background-color: #018644
             margin: 2px 0
+@media (max-width: 991px)
+    .navbar
+        &__mobile, &__landline
+            display: none
+@media (max-width: 576px)
+    .logo
+        display: none
+    .menu
+        top: 80px
+        &-button
+            height: 60px
+        &__nav
+            flex-direction: column
+            justify-content: space-between
+        &__link
+            margin-bottom: 20px
