@@ -45,6 +45,7 @@
 
 body {
   background-image: url("../img/bg.png");
+  color: #48423b;
   font-family: 'ProximaNova-Regular', sans-serif;
 }
 
@@ -167,7 +168,7 @@ img {
   font-size: 18px;
   font-family: 'ProximaNova-Bold', sans-serif;
   text-decoration: none;
-  color: #262626;
+  color: #48423b;
 }
 
 .navbar__small-text {
@@ -362,7 +363,7 @@ img {
   padding: 5px 0 0 43px;
   width: 350px;
   height: 27px;
-  color: #262626;
+  color: #48423b;
 }
 
 .menu-uslugi li a:hover {
@@ -709,11 +710,23 @@ img {
 
 .features__link {
   text-decoration: none;
-  color: #262626;
+  color: #48423b;
 }
 
 .features__sale {
-  background: #ffffff url("../img/features/icon-aktsiya.png") no-repeat 0 0;
+  background: #ffffff url("../img/features/icon-aktsiya.png") no-repeat right 30px;
+}
+
+.features__sale .features-block__text {
+  color: #48423b;
+}
+
+.features__sale p {
+  color: #CE0100;
+}
+
+.features__sale span {
+  color: #CE0100;
 }
 
 .row {
