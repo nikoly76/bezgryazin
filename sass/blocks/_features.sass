@@ -1,14 +1,33 @@
 .menu
     &-uslugi
+        
+        margin-top: 0
         display: flex
         justify-content: space-between
         margin-top: 40px
-        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+        // box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+        
         ul
+            background: #ffffff
             list-style: none
             display: flex
             flex-wrap: wrap
             justify-content: space-between
+            padding-left: 0
+            &:after
+                display: block
+                background: url('../img/advantage-line.png') no-repeat 0 0
+                content: " "
+                width: 100%
+                height: 55px
+                
+            &:before
+                display: block
+                background: url('../img/advantage-line.png') no-repeat 0 0
+                content: " "
+                width: 100%
+                height: 55px
+                transform: rotate(180deg)
         li
             display: block
             width: 350px
@@ -17,18 +36,15 @@
             font-size: 16px
             line-height: 16px
             padding: 7px
+            margin-left: 40px
             margin-top: 5px
-            
-            
-            &:hover
-                background-color: $bg-secondary
             a
                 text-decoration: none
                 padding: 5px 0 0 43px
                 width: 350px
                 height: 27px
                 color: $text-color
-                +bold
+                
                 &:hover
                     color: #FDAF17
         &__fz-1
@@ -113,7 +129,7 @@
     height: 32px
     width: 32px
     border-radius: 17px
-    background: #fff
+    background: url('../img/bg.png')
     top: 3px
     left: 3px
     transition-duration: 300ms
@@ -125,7 +141,7 @@
 .switch-on::after 
     left: 37px
 
-.features    
+.features 
     &-block
         display: flex
         justify-content: space-between
@@ -141,7 +157,22 @@
             text-transform: uppercase
             text-decoration: none
             padding-top: 10px
-            box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+            background-color: #ffffff
+            // box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+            &:after
+                display: block
+                background: url('../img/advantage-line.png') no-repeat 0 0
+                content: " "
+                width: 100%
+                height: 55px
+            &:before
+                display: block
+                background: url('../img/advantage-line.png') no-repeat 0 0
+                content: " "
+                width: 100%
+                height: 55px
+                transform: rotate(180deg)
+                margin-top: -35px
             hr
                 border: none
                 height: 3px
@@ -236,7 +267,7 @@
         text-decoration: none
         color: $text-color 
     &__sale
-        background: url('../img/features/icon-aktsiya.png') no-repeat left top       
+        background: #ffffff url('../img/features/icon-aktsiya.png') no-repeat 0 0       
 
 .row
     display: none
@@ -247,3 +278,14 @@
         height: 3px
         margin: 0
         background-color: rgba(0, 0, 0, 0.1) 
+@media (max-width: 991px)
+    .features
+        &-block
+            &__item
+                flex-basis: 50%
+@media (max-width: 768px)
+    .features
+        &-block
+            &__item
+                flex-basis: 100%
+                margin-bottom: 50px

@@ -28,23 +28,24 @@
 }
 
 @font-face {
-  font-family: 'Comfortaa Light';
-  src: url("../fonts/Comfortaa-Light.eot");
-  src: url("../fonts/Comfortaa-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Comfortaa-Light.woff") format("woff"), url("../fonts/Comfortaa-Light.ttf") format("truetype");
+  font-family: 'ProximaNova-Regular';
+  src: url("../fonts/ProximaNova-Regular.eot");
+  src: url("../fonts/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/ProximaNova-Regular.woff") format("woff"), url("../fonts/ProximaNova-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Comfortaa Bold';
-  src: url("../fonts/Comfortaa-Bold.eot");
-  src: url("../fonts/Comfortaa-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Comfortaa-Bold.woff") format("woff"), url("../fonts/Comfortaa-Bold.ttf") format("truetype");
+  font-family: 'ProximaNova-Bold';
+  src: url("../fonts/ProximaNova-Bold.eot");
+  src: url("../fonts/ProximaNova-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/ProximaNova-Bold.woff") format("woff"), url("../fonts/ProximaNova-Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  font-family: 'Comfortaa Light', sans-serif;
+  background-image: url("../img/bg.png");
+  font-family: 'ProximaNova-Regular', sans-serif;
 }
 
 img {
@@ -57,7 +58,7 @@ img {
 
 .section-title {
   font-size: 30px;
-  font-family: 'Comfortaa Bold', sans-serif;
+  font-family: 'ProximaNova-Bold', sans-serif;
   text-align: center;
   text-transform: uppercase;
 }
@@ -82,7 +83,7 @@ img {
   font-size: 12px;
   text-transform: uppercase;
   color: #018644;
-  font-family: 'Comfortaa Bold', sans-serif;
+  font-family: 'ProximaNova-Bold', sans-serif;
   background-color: #fff;
   text-decoration: none;
   border-radius: 25px;
@@ -96,7 +97,7 @@ img {
   padding: 25px 45px;
   background-color: #018644;
   color: #ffffff;
-  font-family: 'Comfortaa Bold', sans-serif;
+  font-family: 'ProximaNova-Bold', sans-serif;
   cursor: pointer;
 }
 
@@ -164,7 +165,7 @@ img {
   display: block;
   margin-bottom: 5px;
   font-size: 18px;
-  font-family: 'Comfortaa Bold', sans-serif;
+  font-family: 'ProximaNova-Bold', sans-serif;
   text-decoration: none;
   color: #262626;
 }
@@ -275,7 +276,7 @@ img {
 .hero__subtitle {
   display: block;
   font-size: 20px;
-  font-family: 'Comfortaa Bold', sans-serif;
+  font-family: 'ProximaNova-Bold', sans-serif;
   margin-bottom: 40px;
 }
 
@@ -302,6 +303,7 @@ img {
 }
 
 .menu-uslugi {
+  margin-top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -309,11 +311,10 @@ img {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-top: 40px;
-  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .menu-uslugi ul {
+  background: #ffffff;
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -323,6 +324,25 @@ img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding-left: 0;
+}
+
+.menu-uslugi ul:after {
+  display: block;
+  background: url("../img/advantage-line.png") no-repeat 0 0;
+  content: " ";
+  width: 100%;
+  height: 55px;
+}
+
+.menu-uslugi ul:before {
+  display: block;
+  background: url("../img/advantage-line.png") no-repeat 0 0;
+  content: " ";
+  width: 100%;
+  height: 55px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .menu-uslugi li {
@@ -333,11 +353,8 @@ img {
   font-size: 16px;
   line-height: 16px;
   padding: 7px;
+  margin-left: 40px;
   margin-top: 5px;
-}
-
-.menu-uslugi li:hover {
-  background-color: #f1f1f1;
 }
 
 .menu-uslugi li a {
@@ -346,7 +363,6 @@ img {
   width: 350px;
   height: 27px;
   color: #262626;
-  font-family: 'Comfortaa Bold', sans-serif;
 }
 
 .menu-uslugi li a:hover {
@@ -474,7 +490,7 @@ img {
 
 .switch-swbtn {
   color: #018644;
-  font-family: 'Comfortaa Bold', sans-serif;
+  font-family: 'ProximaNova-Bold', sans-serif;
 }
 
 .switch-btn {
@@ -498,7 +514,7 @@ img {
   height: 32px;
   width: 32px;
   border-radius: 17px;
-  background: #fff;
+  background: url("../img/bg.png");
   top: 3px;
   left: 3px;
   -webkit-transition-duration: 300ms;
@@ -534,12 +550,30 @@ img {
       -ms-flex-pack: justify;
           justify-content: space-between;
   margin-bottom: 100px;
-  font-family: 'Comfortaa Bold', sans-serif;
+  font-family: 'ProximaNova-Bold', sans-serif;
   text-transform: uppercase;
   text-decoration: none;
   padding-top: 10px;
-  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.features-block__item:after {
+  display: block;
+  background: url("../img/advantage-line.png") no-repeat 0 0;
+  content: " ";
+  width: 100%;
+  height: 55px;
+}
+
+.features-block__item:before {
+  display: block;
+  background: url("../img/advantage-line.png") no-repeat 0 0;
+  content: " ";
+  width: 100%;
+  height: 55px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  margin-top: -35px;
 }
 
 .features-block__item hr {
@@ -554,7 +588,7 @@ img {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  font-family: 'Comfortaa Bold', sans-serif;
+  font-family: 'ProximaNova-Bold', sans-serif;
   background-color: #01864533;
 }
 
@@ -612,19 +646,19 @@ img {
 
 .features-block__text {
   font-size: 18px;
-  font-family: 'Comfortaa Bold', sans-serif;
+  font-family: 'ProximaNova-Bold', sans-serif;
   margin-top: 20px;
   white-space: nowrap;
 }
 
 .features-block__subtitle {
   text-transform: lowercase;
-  font-family: 'Comfortaa Light', sans-serif;
+  font-family: 'ProximaNova-Regular', sans-serif;
 }
 
 .features-block__subtitle span {
   font-size: 30px;
-  font-family: 'Comfortaa Bold', sans-serif;
+  font-family: 'ProximaNova-Bold', sans-serif;
 }
 
 .features-block__more {
@@ -679,7 +713,7 @@ img {
 }
 
 .features__sale {
-  background: url("../img/features/icon-aktsiya.png") no-repeat left top;
+  background: #ffffff url("../img/features/icon-aktsiya.png") no-repeat 0 0;
 }
 
 .row {
@@ -694,5 +728,20 @@ img {
   height: 3px;
   margin: 0;
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 991px) {
+  .features-block__item {
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-block__item {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    margin-bottom: 50px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
