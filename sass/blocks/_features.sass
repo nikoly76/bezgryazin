@@ -8,7 +8,7 @@
         // box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
         
         ul
-            background: #ffffff
+            background: $bg-first
             list-style: none
             display: flex
             flex-wrap: wrap
@@ -46,7 +46,7 @@
                 color: $text-color
                 
                 &:hover
-                    color: #FDAF17
+                    color: $sub-primary
         &__fz-1
             background: url('../img/features/uslugi/mini_fiz_service_1.png') no-repeat
             &:hover
@@ -136,7 +136,7 @@
     position: absolute
     z-index: 1
 .switch-on 
-    background: #FDAF17
+    background: $sub-primary
 
 .switch-on::after 
     left: 37px
@@ -157,7 +157,7 @@
             text-transform: uppercase
             text-decoration: none
             padding-top: 10px
-            background-color: #ffffff
+            background-color: $bg-first
             // box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
             &:after
                 display: block
@@ -183,7 +183,7 @@
             display: flex
             width: 100%
             +bold
-            background-color: #01864533            
+            background-color: $list-header            
             &-small
                 display: flex
                 width: 100%
@@ -231,6 +231,7 @@
             text-align: left
             padding: 15px
             font-variant: small-caps
+            height: 300px
             ul, li
                 color: $text-color-light
                 font-size: 14px
@@ -267,23 +268,35 @@
         text-decoration: none
         color: $text-color 
     &__sale
-        background: #ffffff url('../img/features/icon-aktsiya.png') no-repeat right 30px
+        background: $bg-first url('../img/features/icon-aktsiya.png') no-repeat right 30px
         .features-block__text
             color: $text-color
         p
-            color: #CE0100
+            color: $sale
         span
-            color: #CE0100       
+            color: $sale      
 
 .row
     display: none
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+    margin-bottom: 80px
     hr
         border: none
         width: 100%
         height: 3px
         margin: 0
         background-color: rgba(0, 0, 0, 0.1) 
+.uslugi
+    &-text
+        display: flex
+        flex-flow: column
+        justify-content: space-between
+        text-align: left
+        margin-top: -40px
+        p
+            border-left: 10px solid $sub-primary
+            padding-left: 20px
+
 @media (max-width: 991px)
     .features
         &-block
