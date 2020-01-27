@@ -1,0 +1,90 @@
+
+.section
+    &__title
+        margin-top: 80px
+.works
+    background: $bg-secondary    
+    &-block
+        display: flex
+        justify-content: space-between
+        flex-wrap: wrap
+        background: $bg-secondary
+        
+        &-top
+            display: block
+            background: url(../img/uzorBottom.png) repeat-x 0 0
+            height: 28px
+            width: 100%
+            margin-top: -78px
+        &__item
+            flex-basis: 18%
+            position: relative
+            text-align: center
+            +bold
+            min-width: 170px
+            margin-right: 5px
+            background: $bg-first 
+            margin-bottom: 60px 
+            &:before
+                display: block
+                position: absolute
+                top: 5%
+                left: 200px
+                content: " " 
+                background: url(../img/work_icons.png)
+                width: 29px
+                height: 58px
+            &:last-child
+                &:before
+                    display: none
+        &__title
+            text-transform: uppercase
+            font-size: 15px
+            height: 2em
+            padding: 0 10px
+        &__subtitle
+            padding: 0 10px
+            font-size: 15px
+            +light
+            text-align: left
+            text-transform: none
+            padding-bottom: 10px            
+        &__image
+            width: 100px
+        &-bottom
+            display: block
+            background: url(../img/uzorBottom.png) repeat-x 0 0
+            width: 100%
+            height: 30px
+            margin-bottom: -80px
+            transform: rotate(180deg)
+@media (max-width: 1199px)
+    .works
+        &-block
+            &__item
+                flex-basis: 18%
+                &:before
+                    left: 165px
+                    z-index: 2
+@media (max-width: 991px)
+    .works
+        &-block
+            justify-content: flex-start
+            &__item
+                flex-basis: 31%
+                margin-right: 10px
+                &:before
+                    left: 225px
+@media (max-width: 768px)
+    .works
+        &-block
+            &__item
+                flex-basis: 100%
+                margin: 5px 0
+                &:before
+                    top: 90%
+                    left: 40px
+                    transform: rotate(90deg)
+                    
+               
+                                   
