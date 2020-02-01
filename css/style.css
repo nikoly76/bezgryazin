@@ -126,6 +126,12 @@ img {
   background: #f1f1f1;
 }
 
+.input {
+  height: 50px;
+  padding: 10px;
+  border: 1px solid #dddddd;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -792,7 +798,7 @@ img {
 }
 
 .works {
-  background: #f1f1f1;
+  background: url(../img/bgBottom.png);
 }
 
 .works-block {
@@ -804,7 +810,6 @@ img {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background: #f1f1f1;
 }
 
 .works-block-top {
@@ -911,5 +916,101 @@ img {
     -webkit-transform: rotate(90deg);
             transform: rotate(90deg);
   }
+}
+
+.calc__result {
+  margin-top: 40px;
+}
+
+.form__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form__label {
+  display: block;
+  font-size: 17px;
+  margin-bottom: 15px;
+}
+
+.form__group {
+  -ms-flex-preferred-size: 33.33%;
+      flex-basis: 33.33%;
+}
+
+.form__group select {
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.form__group select:-ms-expand {
+  display: none;
+}
+
+.form__input {
+  width: 100%;
+  border-right-width: 0;
+}
+
+.form__input:last-child {
+  border-right-width: 1px;
+}
+
+.form__slide {
+  display: inline-block;
+  -ms-flex-preferred-size: 66.66%;
+      flex-basis: 66.66%;
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form__slide span {
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  left: 8px;
+  top: 1px;
+  right: 90px;
+  bottom: 0;
+}
+
+.form__slide output {
+  position: absolute;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  font-size: 14px;
+  color: #ffffff;
+  font-family: 'ProximaNova-Bold', sans-serif;
+  top: 35px;
+  bottom: 0;
+  margin: auto 0;
+}
+
+.slider {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  height: 10px;
+  background: #01864533;
+  outline: none;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 90px;
+  height: 30px;
+  background: #018644;
+  border-radius: 25px;
 }
 /*# sourceMappingURL=style.css.map */

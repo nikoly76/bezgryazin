@@ -1,0 +1,61 @@
+.calc
+    &-block
+    &__result
+        margin-top: 40px
+        
+.form
+    &__row
+        display: flex
+        align-items: center
+    &__label
+        display: block
+        font-size: 17px
+        margin-bottom: 15px
+    &__group
+        flex-basis: 33.33%
+        select
+            cursor: pointer
+            appearance: none
+            &:-ms-expand
+                display: none
+    &__input
+        width: 100%
+        border-right-width: 0
+        &:last-child
+            border-right-width: 1px
+    &__slide
+        display: inline-block
+        flex-basis: 66.66%
+        position: relative
+        width: 100%
+        margin-top: 20px
+        span
+            display: block
+            position: absolute
+            pointer-events: none
+            left: 8px
+            top: 1px
+            right: 90px
+            bottom: 0
+        output
+            position: absolute
+            transform: translateX(50%)
+            font-size: 14px
+            color: $bg-first
+            +bold
+            top: 35px
+            bottom: 0
+            margin: auto 0
+.slider
+    appearance: none
+    width: 100%
+    height: 10px
+    background: $list-header
+    outline: none
+    transition: opacity 0.2s
+.slider::-webkit-slider-thumb
+    appearance: none
+    width: 90px
+    height: 30px
+    background: $primary
+    border-radius: 25px

@@ -735,6 +735,58 @@
         </div>
     </section>
     <!-- /.features section -->
+    <section class="advantage section">
+        <div class="container">
+            <h2 class="section-title section__title">Расчет стоимости</h2>
+            <p class="section-subtitle section__subtitle">Чистота - это не только приятно, но и выгодно!</p>
+            <div class="calc-block" id="calculator">
+                <div class="calc-block__item">
+                    <p class="calc__title">Расчет стоимости (Шаг 1 из 2)</p>
+                    <form action="#" class="form calc__form" id="calcForm">
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="" class="form__label">Выберите услугу:</label>
+                                    <select id="madType" name="madType" class="input form__input">
+                                        <optgroup label="Услуги физ.лицам">
+                                        <option selected="selected" name="уборка квартиры" value="fz1">Уборка квартиры</option>
+                                        <option name="уборка коттеджа" value="fz1">Уборка коттеджа</option>
+                                        <option name="Эко-уборка квартиры/дома" value="fz2">Эко-уборка квартиры и дома</option>
+                                        <option name="уборка после ремонта" value="fz3">Уборка после ремонта</option>
+                                        <option value="fz3">Послестроительная уборка</option>
+                                        <option value="fz4">Мойка окон</option>
+                                        <option name="химчистка" value="fz5">Химчистка мягкой мебели</option>
+                                        <optgroup label="Услуги юр.лицам">
+                                        <option value="yr1">Уборка офиса</option>
+                                        <option value="yr2">Уборка производственных помещений</option>
+                                        <option value="yr3">Мойка окон в офисе</option>
+                                        <option value="yr4">Химчистка мягкой мебели</option>
+                                    </select>
+                            </div>
+                            <div class="form__group" id="form_Ub_Type">
+                                <label for="" class="form__label">Выберите тип уборки:</label>
+                                <select id="ubType" name="ubType" class="input form__input">
+                                    <option selected="selected" name="поддерживающая" id="pUb" value="50">Поддерживающая уборка</option>
+                                    <option name="генеральная" id="gUb" value="90">Генеральная уборка</option>
+                                    <option name="после ремонта" id="rUb" value="125">Уборка после ремонта</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form__row">
+                            <div class="form__slide">
+                                    <label for="" class="form__label" id="slide_label">Укажите площадь квартиры:</label>
+                                <input type="range" min="40" max="300" value="40" step="5" class="slider" id="inId" name="calcrange" >
+                                <span><output name="calcrange" id="outId">40 м2</output></span>                                
+                            </div>
+                        </div>
+                        <div class="calc__result" id="calcResult">К оплате <span>2000</span> руб.</div>
+                    </form>
+                    <!-- /.form calc__form -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
     <section class="works section">
         <div class="works-block-top"></div>
         <div class="container">
@@ -753,13 +805,13 @@
                     <p class="works-block__title">Уточненяем детали</p>
                     <p class="works-block__subtitle">Получив заявку, наши менеджеры свяжутся с вами для уточнения нюансов: 
                         предполагаемых масштабов уборки, перечня работ, 
-                        а также когда вам будет удобно принять мастера для предварительной оценки.</p>        
+                        а также когда вам будет удобно принять менеджера для предварительной оценки.</p>        
                 </div>
                 <div class="works-block__item">
                     <img src="img/works/1-3.gif" alt="Заявка" class="works-block__image">
                     <p class="works-block__title">Расчет стоимости</p>
                     <p class="works-block__subtitle">Ориентировочную стоимость вы можете посчитать с помощью калькулятора на сайте. 
-                        мастера компании всегда дают точную стоимость услуг, никаких доплат на месте!</p>        
+                        Менеджеры компании всегда дают точную стоимость услуг, никаких доплат на месте!</p>        
                 </div>
                 <!-- <div class="works-block__item">
                     <img src="img/works/1-4.gif" alt="Заявка" class="works-block__image">
@@ -788,19 +840,13 @@
         <div class="works-block-bottom"></div>
     </section>
     <!-- /.works section -->
-    <section class="advantage section">
-        <div class="container">
-            
-        </div>
-    </section>
     
 </body>
 <script
-  src="https://code.jquery.com/jquery-2.2.4.js"
-  integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-  crossorigin="anonymous"></script>
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script>
     $(document).ready(function(){
+        "use strict";
         $(window).scroll(function() {
             if ($(this).scrollTop() > 150){
                 $('header').addClass("header__sticky");
@@ -847,6 +893,87 @@
         $('#li-h-2').css("visibility", "hidden");
     });
     </script>
+    <script>
+        
+        $(document).ready(function(){
+            var madType_id = $( 'select#madType' ).val();
+            var slider_range = {
+
+            };
+            var ubType_list = {
+                
+                "fz1":
+                [
+                    {"price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"40", "max":"300"},
+                    {"price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"40", "max":"300"}, 
+                    {"price":"125", "name":"после ремонта", "text":"Уборка после ремонта", "min":"40", "max":"300"}
+                ],
+                
+                "fz2": [
+                    {"price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"100", "max":"1000"},
+                    {"price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"100", "max":"1000"}
+                ],
+                "fz3": [
+                    {"price":"50", "name":"квартиры", "text":"Уборка квартиры", "min":"40", "max":"300"},
+                    {"price":"90", "name":"коттеджа/дома", "text":"Уборка коттеджа или дома", "min":"100", "max":"1000"}
+                ],
+                "fz4": [
+                    {"price":"", "name":"сезонная", "text":"Сезонная мойка"},
+                    {"price":"", "name":"послестроительная", "text":"После ремонта"}
+                ],
+                "fz5": [
+                    {"price":"", "name":"текстильной мебели", "text":"Текстильная мебель"},
+                    {"price":"", "name":"коттеджа/дома", "text":"Кожанная мебель"}
+                ]
+            };
+
+            $.each(ubType_list, function(key, data){
+                //console.log(key, data);
+                if (key == madType_id) {
+                    $.each(data, function(key, value){ 
+                        //console.log(key, value);
+                    });
+                }
+            });
+
+
+            $( '#madType' ).change(function(){
+                    var madType_id = $( this ).val();
+                    
+                    $('#ubType').prop('disabled', true)
+                    .find('option').remove();
+
+                $.each(ubType_list, function(key, data){
+                       
+                    if (key == madType_id) {
+                        $.each(data, function(key, value){ 
+                            console.log('select price = ' + value['price'] + '; ' + 'name = ' + value['name'] + '; ' + value['text']);
+                            $('#ubType').append('<option value="' + value['price'] + '" name="' + value['name'] + '">' + value['text'] + '</option>');
+                        });
+                    }
+                    
+                });
+                $('#ubType').prop('disabled', false)
+            });
+
+            function Update() {
+                var inp = document.getElementById("inId");
+                var out = document.getElementById("outId");
+                var calcResult = document.getElementById("calcResult");            
+                out.textContent = (inp.value + " м2");
+                out.style.left = (inp.value - inp.min) / (inp.max - inp.min) * 100 + "%";
+                
+            }
+            document.getElementById("inId").addEventListener('input', Update);
+            Update();
+
+            function calculate() {}
+                
+        
+        });
+        
+        
+        </script>
     
     
 </html>
