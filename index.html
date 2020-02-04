@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Клининг БЕЗГРЯЗИН</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -741,7 +742,7 @@
             <p class="section-subtitle section__subtitle">Чистота - это не только приятно, но и выгодно!</p>
             <div class="calc-block" id="calculator">
                 <div class="calc-block__item">
-                    <p class="calc__title">Расчет стоимости (Шаг 1 из 2)</p>
+                    <div class="calc__title">Расчет стоимости <span>(Шаг 1 из 2)</span></div>
                     <form action="#" class="form calc__form" id="calcForm">
                         <div class="form__row">
                             <div class="form__group">
@@ -749,11 +750,11 @@
                                     <select id="madType" name="madType" class="input form__input">
                                         <optgroup label="Услуги физ.лицам">
                                         <option selected="selected" name="уборка квартиры" value="fz1">Уборка квартиры</option>
-                                        <option name="уборка коттеджа" value="fz1">Уборка коттеджа</option>
+                                        <option name="уборка коттеджа" value="fz6">Уборка коттеджа</option>
                                         <option name="Эко-уборка квартиры/дома" value="fz2">Эко-уборка квартиры и дома</option>
                                         <option name="уборка после ремонта" value="fz3">Уборка после ремонта</option>
-                                        <option value="fz3">Послестроительная уборка</option>
-                                        <option value="fz4">Мойка окон</option>
+                                        <option value="fz7">Послестроительная уборка</option>
+                                        <option name="мойка окон" value="fz4">Мойка окон</option>
                                         <option name="химчистка" value="fz5">Химчистка мягкой мебели</option>
                                         <optgroup label="Услуги юр.лицам">
                                         <option value="yr1">Уборка офиса</option>
@@ -771,16 +772,129 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form__row">
+                        <div class="form__row" id="slide">
                             <div class="form__slide">
                                     <label for="" class="form__label" id="slide_label">Укажите площадь квартиры:</label>
                                 <input type="range" min="40" max="300" value="40" step="5" class="slider" id="inId" name="calcrange" >
                                 <span><output name="calcrange" id="outId">40 м2</output></span>                                
                             </div>
                         </div>
-                        <div class="calc__result" id="calcResult">К оплате <span>2000</span> руб.</div>
+                        
+                        <div class="form-addWork form__addWork" id="dop">
+                            <h3>Дополнительные работы:</h3>
+                            <div class="addWork-additional">
+                                <input type="checkbox" class="checkbox" name="dop" id="key" value="500"><label for="key">Доставить ключи</label><span>500</span>
+                            </div>
+                            <div class="addWork-additional">
+                                <input type="checkbox" class="checkbox" name="dop" id="refrigerator" value="450"><label for="refrigerator">Помыть холодильник</label>
+                            </div>
+                            <div class="addWork-additional">
+                                <input type="checkbox" class="checkbox" name="dop" id="oven" value="450"><label for="oven">Помыть духовку</label>
+                            </div>
+                            <div class="addWork-additional">
+                                <input type="checkbox" class="checkbox" name="dop" id="microwave" value="250"><label for="microwave">Помыть СВЧ печь</label>
+                            </div>
+                            <div class="addWork-additional">
+                                <input type="checkbox" class="checkbox" name="dop" id="kitchenCabinet" value="500"><label for="kitchenCabinet">Помыть внутри кухонных шкафов</label>
+                            </div>
+                        </div>
+                        <div class="form-window form__window" id="window">
+                            <div data-type="window" class="dp-1 dop-item active">
+                                <span class="dp-item-name">одна створка</span>
+                                <br>
+                                <span class="dp-item-cost">190 руб.</span>
+                                <span class="dp-item-cost hidden">190</span>
+                                <div class="input-wrapper">
+                                    <a class="dp-item__button window__button--prew button__prew"></a>
+                                        <input type="text" name="w_1" value="1" class="dp-item__input">
+                                    <a class="dp-item__button window__button--next  button__next"></a>
+                                </div>
+                            </div>
+                            <div data-type="window" class="dp-2 dop-item">
+                                <span class="dp-item-name">одна створка с фрамугой</span>
+                                <br>
+                                <span class="dp-item-cost">290 руб.</span>   
+                            </div>
+                            <div data-type="window" class="dp-3 dop-item">
+                                <span class="dp-item-name">две створки</span>
+                                <br>
+                                <span class="dp-item-cost">350 руб.</span>
+                            </div>
+                            <div data-type="window" class="dp-4 dop-item">
+                                <span class="dp-item-name">две створки с фрамугой</span>
+                                <br>
+                                <span class="dp-item-cost">450 руб.</span>   
+                            </div>
+                            <div data-type="window" class="dp-5 dop-item">
+                                <span class="dp-item-name">три створки</span>
+                                <br>
+                                <span class="dp-item-cost">500 руб.</span>
+                            </div>
+                            <div data-type="window" class="dp-6 dop-item">
+                                <span class="dp-item-name">три створки с фрамугой</span>
+                                <br>
+                                <span class="dp-item-cost">600 руб.</span>   
+                            </div>
+                            <div data-type="window" class="dp-7 dop-item">
+                                <span class="dp-item-name">балконная дверь</span>
+                                <br>
+                                <span class="dp-item-cost">350 руб.</span>
+                            </div>
+                            <div data-type="window" class="dp-8 dop-item">
+                                <span class="dp-item-name">балконная дверь с окном</span>
+                                <br>
+                                <span class="dp-item-cost">550 руб.</span>   
+                            </div>
+                            <div data-type="window" class="dp-9 dop-item">
+                                <span class="dp-item-name">балкон (250 р. за створку)</span>
+                                <br>
+                                <span class="dp-item-cost">250 руб.</span>
+                            </div>
+                            <div data-type="window" class="dp-10 dop-item">
+                                <span class="dp-item-name">Нестандартное остекление</span>
+                                <br>
+                                <span class="dp-item-cost">175 руб./м2</span>   
+                            </div>
+                            <div data-type="window" class="dp-11 dop-item">
+                                <span class="dp-item-name">мойка москитных сеток</span>
+                                <br>
+                                <span class="dp-item-cost">100 руб.</span>
+                            </div>
+                            <div data-type="window" class="dp-12 dop-item">
+                                <span class="dp-item-name">мойка оконных решеток</span>
+                                <br>
+                                <span class="dp-item-cost">200 руб.</span>   
+                            </div>
+                            <div data-type="window" class="dp-13 dop-item">
+                                <span class="dp-item-name">мойка жалюзи</span>
+                                <br>
+                                <span class="dp-item-cost">250 руб.</span>
+                            </div>
+                            <div data-type="window" class="dp-14 dop-item">
+                                <span class="dp-item-name">мойка стационарных перегородок</span>
+                                <br>
+                                <span class="dp-item-cost">100 руб./м2</span>   
+                            </div>
+                        </div>
                     </form>
                     <!-- /.form calc__form -->
+                </div>
+                <div class="work-block__item">
+                    <div class="work-block__header"></div>
+                    <div class="work-block__main">
+                        <div class="work-block__calc-header">
+                            <span id="totalTextResult">
+                            </span>
+                            <span id="total">
+                            2000
+                            </span> руб.</div>
+                        <div class="work-block__calc-main">
+                        <div class="dop-header" id="dopHeader"></div>
+                        <div class="dop-name" id="dopName"></div>    
+                        </div>
+
+                    </div>
+                    <div class="work-block__bottom"></div>    
                 </div>
             </div>
 
@@ -842,8 +956,8 @@
     <!-- /.works section -->
     
 </body>
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
     $(document).ready(function(){
         "use strict";
@@ -897,25 +1011,54 @@
         
         $(document).ready(function(){
             var madType_id = $( 'select#madType' ).val();
-            var slider_range = {
+            var inp = document.getElementById("inId");
+            totalText_1 = ($('#madType').find(":selected").prop('name'));
+            totalText_2 = ($('#ubType').find(":selected").prop('name'));
+            textSq = ("площадью " + inp.value + " м2");
+            totalTextResult = (totalText_2 + " " + totalText_1 + " " + textSq);            
+            $('#totalTextResult').html(totalTextResult);
 
+            $('#dop input:checkbox').click(function(){
+                dopResult = '';
+                dopHeader = '';
+                $("#dopHeader").html
+                $('#dopName').html = '';
+                var set = $("input[type=checkbox]").get();
+                $(set).each(function(){
+                    
+                    if ($(this).is(':checked')) {
+                        dopHeader = '<h5>Дополнительные работы:</h5>';
+                        dopResult =  dopResult + '<div class="dop-name__left">' + $(this).next('label').html() + '</div><div class="dop-name__right">- ' + $(this).prop('value') + ' \u20BD</div>'; 
+                        
+                    }
+                });
+                $("#dopName").html(dopResult);
+                $("#dopHeader").html(dopHeader);
+                dopsum();
+            });
+            function dopsum() {
+                var total_dop = 0;
+                $('#dop input:checkbox:checked').each(function(){
+                    total_dop += isNaN(parseInt($(this).val())) ? 0 : parseInt($(this).val());
+                });
+                //console.log(total_dop);
             };
             var ubType_list = {
                 
                 "fz1":
                 [
-                    {"price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"40", "max":"300"},
-                    {"price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"40", "max":"300"}, 
-                    {"price":"125", "name":"после ремонта", "text":"Уборка после ремонта", "min":"40", "max":"300"}
+                    {"price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"40", "max":"300", "value":"40"},
+                    {"price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"40", "max":"300", "value":"40"}, 
+                    {"price":"125", "name":"послестроительная", "text":"Уборка после ремонта", "min":"40", "max":"300", "value":"40"}
                 ],
                 
                 "fz2": [
-                    {"price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"100", "max":"1000"},
-                    {"price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"100", "max":"1000"}
+                    {"price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"40", "max":"300", "value":"40"},
+                    {"price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"40", "max":"300", "value":"40"}
                 ],
                 "fz3": [
-                    {"price":"50", "name":"квартиры", "text":"Уборка квартиры", "min":"40", "max":"300"},
-                    {"price":"90", "name":"коттеджа/дома", "text":"Уборка коттеджа или дома", "min":"100", "max":"1000"}
+                    {"price":"50", "name":"квартиры", "text":"Уборка квартиры", "min":"40", "max":"300", "value":"40"},
+                    {"price":"90", "name":"коттеджа/дома", "text":"Уборка котте��жа или дома", "min":"100", "max":"1000", "value":"100"}
                 ],
                 "fz4": [
                     {"price":"", "name":"сезонная", "text":"Сезонная мойка"},
@@ -924,7 +1067,13 @@
                 "fz5": [
                     {"price":"", "name":"текстильной мебели", "text":"Текстильная мебель"},
                     {"price":"", "name":"коттеджа/дома", "text":"Кожанная мебель"}
-                ]
+                ],
+                "fz6":
+                [
+                    {"price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"100", "max":"1000", "value":"100"},
+                    {"price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"100", "max":"1000", "value":"100"}, 
+                    {"price":"125", "name":"послестроительная", "text":"Уборка после ремонта", "min":"100", "max":"1000", "value":"100"}
+                ],
             };
 
             $.each(ubType_list, function(key, data){
@@ -936,38 +1085,64 @@
                 }
             });
 
+            $('#calcForm select').change(function(){
+                
+                Update();
+            });
 
             $( '#madType' ).change(function(){
                     var madType_id = $( this ).val();
-                    
                     $('#ubType').prop('disabled', true)
                     .find('option').remove();
-
-                $.each(ubType_list, function(key, data){
-                       
-                    if (key == madType_id) {
-                        $.each(data, function(key, value){ 
-                            console.log('select price = ' + value['price'] + '; ' + 'name = ' + value['name'] + '; ' + value['text']);
-                            $('#ubType').append('<option value="' + value['price'] + '" name="' + value['name'] + '">' + value['text'] + '</option>');
-                        });
+                    if (madType_id == "fz4") {
+                        $('#dop').css("display", "none");
+                        $('#slide').css("display", "none");
+                        $('#window').css("display", "flex");
+                        
                     }
                     
+                $.each(ubType_list, function(key, data){
+                    if (key == madType_id) {
+                        $.each(data, function(key, value){ 
+                            //console.log('select price = ' + value['price'] + '; ' + 'name = ' + value['name'] + '; ' + value['text']);
+                            $('#ubType').append('<option value="' + value['price'] + '" name="' + value['name'] + '">' + value['text'] + '</option>');
+                            $('#inId').prop('min', value['min']);
+                            $('#inId').prop('max', value['max']);
+                            $('#inId').prop('value', value['value']);
+                        });
+                    }
                 });
                 $('#ubType').prop('disabled', false)
+                Update();
+                
             });
 
+            
             function Update() {
                 var inp = document.getElementById("inId");
                 var out = document.getElementById("outId");
                 var calcResult = document.getElementById("calcResult");            
                 out.textContent = (inp.value + " м2");
                 out.style.left = (inp.value - inp.min) / (inp.max - inp.min) * 100 + "%";
-                
+                calculate();
+                totalText_1 = ($('#madType').find(":selected").attr('name'));
+                totalText_2 = ($('#ubType').find(":selected").attr('name'));
+                textSq = ("площадью " + inp.value + " м2");
+                totalTextResult = (totalText_2 + " " + totalText_1 + " " + textSq);            
+                $('#totalTextResult').html(totalTextResult);
             }
             document.getElementById("inId").addEventListener('input', Update);
             Update();
 
-            function calculate() {}
+            function calculate() {
+                var calcResult = document.getElementById("calcResult");
+                var inp = document.getElementById("inId");
+                calcResult = inp.value * ($('#ubType').val());
+                
+                $('#total').html(" - " + calcResult);
+
+            }
+            
                 
         
         });

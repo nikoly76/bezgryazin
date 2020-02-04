@@ -1,18 +1,33 @@
 .calc
     &-block
+        display: flex
+        &__item
+            display: block
+            margin: 10px
+            flex-basis: 65%
+    &__title
+        font-size: 18px
+        text-transform: uppercase
+        +bold
+        span
+            font-size: 16px
+            text-transform: lowercase
+            +light       
+                
     &__result
         margin-top: 40px
         
 .form
     &__row
         display: flex
+        margin-top: 20px
         align-items: center
     &__label
         display: block
         font-size: 17px
         margin-bottom: 15px
     &__group
-        flex-basis: 33.33%
+        flex-basis: 50%
         select
             cursor: pointer
             appearance: none
@@ -25,7 +40,7 @@
             border-right-width: 1px
     &__slide
         display: inline-block
-        flex-basis: 66.66%
+        flex-basis: 100%
         position: relative
         width: 100%
         margin-top: 20px
@@ -46,6 +61,126 @@
             top: 35px
             bottom: 0
             margin: auto 0
+    &__addWork        
+        margin-top: 40px
+    &-window
+
+    &__window
+        display: flex
+        flex-wrap: wrap
+        margin-top: 40px
+         
+        .dop-item
+            display: inline-block
+            position: relative
+            width: 141px
+            height: 141px
+            border: 1px solid #c4c4c4 
+            margin-right: 5px 
+            margin-bottom: 5px
+            text-align: center
+            cursor: pointer
+            transition: all .25s ease-in-out
+            z-index: 1
+        
+            &:hover
+                border: 1px solid $sub-primary
+                transition: all .25s ease-in-out
+                .dp-item-cost
+                    color: $sub-primary
+                    transition: all .25s ease-in-out
+            .dp-item-name
+                display: inline-block
+                margin-top: 80px
+                font-size: 13px 
+                padding: 0 5px 
+                transition: all .25s ease-in-out              
+            .dp-item-cost
+                font-size: 13px
+                +bold
+                color: $primary
+                transition: all .25s ease-in-out
+            .hidden
+                display: none
+            .input-wrapper
+                display: none
+                justify-content: space-between
+                position: absolute
+                left: 0
+                bottom: 0
+                margin-bottom: 5px
+                width: 100%
+                height: 32px
+                overflow: hidden
+                
+            .dp-item
+                &__button
+                    opacity: 1
+                    pointer-events: auto
+                    width: 30px
+                    height: 30px
+                    display: block
+                    text-decoration: none
+                    position: relative
+                    font-size: 15px
+                    line-height: 40px
+                    text-align: center
+                                 
+                    
+                &__input
+                    display: block
+                    flex-grow: 1
+                    margin: 0 2px 2px
+                    opacity: 1
+                    pointer-events: auto
+                    width: 20px
+                    border: none
+                    text-align: center
+                    background-color: #ffffff
+                
+                    
+                
+        .dp-1
+            background: $bg-secondary url(../img/calc/window/win-1.png) center 25px no-repeat
+        .dp-2
+            background: $bg-secondary url(../img/calc/window/win-2.png) center 25px no-repeat
+        .dp-3
+            background: $bg-secondary url(../img/calc/window/win-3.png) center 25px no-repeat
+        .dp-4
+            background: $bg-secondary url(../img/calc/window/win-9.png) center 25px no-repeat
+        .dp-5
+            background: $bg-secondary url(../img/calc/window/win-6.png) center 25px no-repeat
+        .dp-6
+            background: $bg-secondary url(../img/calc/window/win-10.png) center 25px no-repeat
+        .dp-7
+            background: $bg-secondary url(../img/calc/window/door.png) center 25px no-repeat
+        .dp-8
+            background: $bg-secondary url(../img/calc/window/dversoknom.png) center 25px no-repeat
+        .dp-9
+            background: $bg-secondary url(../img/calc/window/balkon.png) center 25px no-repeat
+        .dp-10
+            background: $bg-secondary url(../img/calc/window/nestandart.jpg) center 25px no-repeat
+        .dp-11
+            background: $bg-secondary url(../img/calc/window/moskit.png) center 25px no-repeat
+        .dp-12
+            background: $bg-secondary url(../img/calc/window/reshetka.png) center 25px no-repeat
+        .dp-13
+            background: $bg-secondary url(../img/calc/window/zaluzi.png) center 25px no-repeat
+        .dp-14
+            background: $bg-secondary url(../img/calc/window/peregorodka.png) center 25px no-repeat
+
+        .active
+            border: 1px solid $sub-primary
+            background-position: center 5px
+            .dp-item-name
+                margin-top: 55px
+            .dp-item-cost
+                color: $sub-primary
+            .input-wrapper
+                display: flex
+             
+           
+
 .slider
     appearance: none
     width: 100%
@@ -59,3 +194,84 @@
     height: 30px
     background: $primary
     border-radius: 25px
+.work
+    &-block
+        &__item
+            margin: 10px
+            flex-basis: 35%
+        &__header
+            background: $bg-first url(../img/advantage-line.png) no-repeat 0 0
+            width: 100%
+            height: 55px
+            transform: rotate(180deg)
+        &__main
+            padding-left: 20px
+            background: $bg-first
+            min-height: 100px
+            padding-right: 20px
+        &__calc-header
+            background: $bg-first url(../img/works/01-2.png) no-repeat 0 0
+            min-height: 50px
+            padding-left: 70px
+            padding-right: 20px
+            font-size: 16px
+            +bold
+        &__bottom
+            background: $bg-first url(../img/advantage-line.png) no-repeat 0 0
+            width: 100%
+            height: 55px 
+.addWork-additional
+    margin-top: 20px
+    font-size: 14px
+    .checkbox
+        position: absolute
+        z-index: -1
+        opacity: 0
+        margin: 10px 0 0 20px
+                    
+    .checkbox + label
+        position: relative
+        padding: 0 0 0 45px
+        cursor: pointer
+        &:before
+            content: " "
+            position: absolute
+            top: -2px
+            left: 0
+            width: 36px
+            height: 20px
+            border-radius: 10px
+            background: $primary
+            box-shadow: inset 0 2px 3px rgba(0, 0, 0, .2)
+            transition: .2s
+        &:after
+            content: " "
+            position: absolute
+            top: 0px
+            left: 2px
+            width: 16px
+            height: 16px
+            border-radius: 10px
+            background: $bg-first
+            box-shadow: 0 2px 5px rgba(0, 0, 0, .3)
+            transition: .2s
+    .checkbox:checked + label:before
+        background: $sub-primary
+    .checkbox:checked + label:after
+        left: 18px
+.dop-name
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    width: 100%
+    font-size: 14px
+    &__left
+        margin-top: 10px
+        flex-basis: 70%
+    &__right
+        margin-top: 10px
+        flex-basis: 30%
+        text-align: right
+     
+                        
+    
