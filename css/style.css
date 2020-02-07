@@ -150,6 +150,10 @@ img {
   border: 1px solid #dddddd;
 }
 
+a[disabled] {
+  pointer-events: none !important;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -1062,7 +1066,6 @@ img {
   cursor: pointer;
   -webkit-transition: all .25s ease-in-out;
   transition: all .25s ease-in-out;
-  z-index: 1;
 }
 
 .form__window .dop-item:hover {
@@ -1139,79 +1142,8 @@ img {
   background-color: #ffffff;
 }
 
-.form__window .dp-1 {
-  background: #f1f1f1 url(../img/calc/window/win-1.png) center 25px no-repeat;
-}
-
-.form__window .dp-2 {
-  background: #f1f1f1 url(../img/calc/window/win-2.png) center 25px no-repeat;
-}
-
-.form__window .dp-3 {
-  background: #f1f1f1 url(../img/calc/window/win-3.png) center 25px no-repeat;
-}
-
-.form__window .dp-4 {
-  background: #f1f1f1 url(../img/calc/window/win-9.png) center 25px no-repeat;
-}
-
-.form__window .dp-5 {
-  background: #f1f1f1 url(../img/calc/window/win-6.png) center 25px no-repeat;
-}
-
-.form__window .dp-6 {
-  background: #f1f1f1 url(../img/calc/window/win-10.png) center 25px no-repeat;
-}
-
-.form__window .dp-7 {
-  background: #f1f1f1 url(../img/calc/window/door.png) center 25px no-repeat;
-}
-
-.form__window .dp-8 {
-  background: #f1f1f1 url(../img/calc/window/dversoknom.png) center 25px no-repeat;
-}
-
-.form__window .dp-9 {
-  background: #f1f1f1 url(../img/calc/window/balkon.png) center 25px no-repeat;
-}
-
-.form__window .dp-10 {
-  background: #f1f1f1 url(../img/calc/window/nestandart.jpg) center 25px no-repeat;
-}
-
-.form__window .dp-11 {
-  background: #f1f1f1 url(../img/calc/window/moskit.png) center 25px no-repeat;
-}
-
-.form__window .dp-12 {
-  background: #f1f1f1 url(../img/calc/window/reshetka.png) center 25px no-repeat;
-}
-
-.form__window .dp-13 {
-  background: #f1f1f1 url(../img/calc/window/zaluzi.png) center 25px no-repeat;
-}
-
-.form__window .dp-14 {
-  background: #f1f1f1 url(../img/calc/window/peregorodka.png) center 25px no-repeat;
-}
-
-.form__window .active {
-  border: 1px solid #FDAF17;
-  background-position: center 5px;
-}
-
-.form__window .active .dp-item-name {
-  margin-top: 55px;
-}
-
-.form__window .active .dp-item-cost {
-  color: #FDAF17;
-}
-
-.form__window .active .input-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.form__window .dp {
+  background: #f1f1f1 center 25px no-repeat;
 }
 
 .slider {
@@ -1351,5 +1283,24 @@ img {
   -ms-flex-preferred-size: 30%;
       flex-basis: 30%;
   text-align: right;
+}
+
+.dop-item.active {
+  border: 1px solid #FDAF17;
+  background-position: center 5px;
+}
+
+.dop-item.active > .dp-item-name {
+  margin-top: 55px;
+}
+
+.dop-item.active > .dp-item-cost {
+  color: #FDAF17;
+}
+
+.dop-item.active .input-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style.css.map */
