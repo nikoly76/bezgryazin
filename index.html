@@ -39,7 +39,7 @@
         <div class="hero">
                 <div class="container">
                     <div id="hero-image" class="hero-image hero__image">
-                        <!-- <img src="../img/logo-250.png" alt="БЕЗГРЯЗИН"> -->
+                        
                     </div>
                         
                     <div class="hero__text">                        
@@ -749,7 +749,7 @@
                                 <label for="" class="form__label">Выберите услугу:</label>
                                     <select id="madType" name="madType" class="input form__input">
                                         <optgroup label="Услуги физ.лицам">
-                                        <option selected="selected" name="уборка квартиры" value="fz1">Уборка квартиры</option>
+                                        <option name="уборка квартиры" value="fz1">Уборка квартиры</option>
                                         <option name="уборка коттеджа" value="fz6">Уборка коттеджа</option>
                                         <option name="Эко-уборка квартиры/дома" value="fz2">Эко-уборка квартиры и дома</option>
                                         <option name="уборка после ремонта" value="fz3">Уборка после ремонта</option>
@@ -779,25 +779,8 @@
                             </div>
                         </div>
                         
-                        <!-- <div class="form-addWork form__addWork" id="dop">
-                            <h3>Дополнительные работы:</h3>
-                            <div class="addWork-additional">
-                                <input type="checkbox" class="checkbox" name="dop" id="key" value="500"><label for="key">Доставить ключи</label><span>500</span>
-                            </div>
-                            <div class="addWork-additional">
-                                <input type="checkbox" class="checkbox" name="dop" id="refrigerator" value="450"><label for="refrigerator">Помыть холодильник</label>
-                            </div>
-                            <div class="addWork-additional">
-                                <input type="checkbox" class="checkbox" name="dop" id="oven" value="450"><label for="oven">Помыть духовку</label>
-                            </div>
-                            <div class="addWork-additional">
-                                <input type="checkbox" class="checkbox" name="dop" id="microwave" value="250"><label for="microwave">Помыть СВЧ печь</label>
-                            </div>
-                            <div class="addWork-additional">
-                                <input type="checkbox" class="checkbox" name="dop" id="kitchenCabinet" value="500"><label for="kitchenCabinet">Помыть внутри кухонных шкафов</label>
-                            </div>
-                        </div> -->
-
+                        
+                        <div class="form-window__title"></div>
                         <div class="form-window form__window" id="window">
                             
                         </div>
@@ -956,12 +939,12 @@
         $(document).ready(function(){
             var madType_id = $( 'select#madType' ).val();
             var inp = document.getElementById("inId");
+            total_dop = 0;
             totalText_1 = ($('#madType').find(":selected").prop('name'));
             totalText_2 = ($('#ubType').find(":selected").prop('name'));
             textSq = ("площадью " + inp.value + " м2");
             totalTextResult = (totalText_2 + " " + totalText_1 + " " + textSq);            
             $('#totalTextResult').html(totalTextResult);
-            
             function activSumm() {
                 activDop_text = "";
                 total_dop = 0;
@@ -982,26 +965,16 @@
                         ' - ( ' + inputVal + ' ' + dp_edIzm +' )</div><div class="dop-name__right">- ' + summ + 
                         ' \u20BD</div>';
                         total_dop += isNaN(parseInt(summ)) ? 0 : parseInt(summ);
-                        
                    }
-                   
                 });
                     calcResult = isNaN(parseInt(calcResult)) ? 0 : parseInt(calcResult);
                     total_price = total_dop + calcResult;
-                   console.log(total_dop);
-                $('.work-block__total').html('К оплате: <span>' + total_price + '</span> рублей');
+                   
+                $('.work-block__total').html('ИТОГО К ОПЛАТЕ: <span>' + total_price + ' \u20BD</span>');
                 $("#dopHeader").html(dopHeader);
                 $('#dopName').html(activDop_text);
             };
-
             
-            function dopsum() {
-                var total_dop = 0;
-                $('#dop input:checkbox:checked').each(function(){
-                    total_dop += isNaN(parseInt($(this).val())) ? 0 : parseInt($(this).val());
-                });
-                console.log(total_dop);
-            };
             var window_list = {
                 "w1":
                 [
@@ -1086,14 +1059,9 @@
                     {"id":"u3", "price":"125", "name":"послестроительная", "text":"Уборка после ремонта", "min":"100", "max":"1000", "value":"100"}
                 ],
             };
-
-            
             $('#calcForm select').change(function(){
                 Update();
             });
-
-            
-
             $( '#madType' ).change(function(){
                     var madType_id = $( this ).val();
                     $('#ubType').prop('disabled', true)
@@ -1103,11 +1071,13 @@
                 $.each(ubType_list, function(key, data){
                     if (key == madType_id) {
                         if (madType_id == "fz4") {
+                        $('.form-window__title').html('<h4>Схема окон:</h4>');    
                         $('#dop').css("display", "none");
                         $('#slide').css("display", "none");
                         $('#window').css("display", "flex");
                     }
                     else {
+                        $('.form-window__title').html('<h4>Дополнительные работы:</h4>'); 
                         $('#dop').css("display", "flex");
                         $('#slide').css("display", "flex");
                         $('#window').css("display", "flex");
@@ -1125,7 +1095,9 @@
                 $('#ubType').prop('disabled', false)
                 Update();
                 vidUborki();
-            });
+                activSumm();
+            }).trigger('change');
+            
             $('#ubType').change(function(){
                 vidUborki();
             });
@@ -1136,6 +1108,8 @@
                     if (key == ub_id) {
                         $('#window').html("");
                         $("#dopName").html("");
+                        
+                        // $('.work-block__total').html("");
                         if (key == "w1") {
                             $('#totalTextResult').html('Сезонная мойка окон');
                             $('#total').html("");
@@ -1226,6 +1200,7 @@
                 out.textContent = (inp.value + " м2");
                 out.style.left = (inp.value - inp.min) / (inp.max - inp.min) * 100 + "%";
                 calculate();
+                activSumm();
                 totalText_1 = ($('#madType').find(":selected").attr('name'));
                 totalText_2 = ($('#ubType').find(":selected").attr('name'));
                 textSq = ("площадью " + inp.value + " м2");
