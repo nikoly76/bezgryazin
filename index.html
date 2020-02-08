@@ -46,7 +46,7 @@
                        <h1 class="hero__title">
                                 Гарантия качества и 100%<br>материальная ответственность</h1>
                         <span class="hero__subtitle">генеральная уборка от 90 руб/м2</span>
-                        <button class="button hero__button">заказать уборку</button>
+                        <a href="#zakaz"><button class="button hero__button" >заказать уборку</button></a>
                     </div>
                          
                 </div>
@@ -736,7 +736,7 @@
         </div>
     </section>
     <!-- /.features section -->
-    <section class="advantage section">
+    <section class="advantage section" id="zakaz">
         <div class="container">
             <h2 class="section-title section__title">Расчет стоимости</h2>
             <p class="section-subtitle section__subtitle">Чистота - это не только приятно, но и выгодно!</p>
@@ -753,7 +753,6 @@
                                         <option name="уборка коттеджа" value="fz6">Уборка коттеджа</option>
                                         <option name="Эко-уборка квартиры/дома" value="fz2">Эко-уборка квартиры и дома</option>
                                         <option name="уборка после ремонта" value="fz3">Уборка после ремонта</option>
-                                        <option value="fz7">Послестроительная уборка</option>
                                         <option name="мойка окон" value="fz4">Мойка окон</option>
                                         <option name="химчистка" value="fz5">Химчистка мягкой мебели</option>
                                         <optgroup label="Услуги юр.лицам">
@@ -807,18 +806,26 @@
                 </div>
                 <div class="work-block__item">
                     <div class="work-block__header"></div>
+                    
                     <div class="work-block__main">
                         <div class="work-block__calc-header">
                             <span id="totalTextResult">
                             </span>
                             <span id="total">
                             2000
-                            </span></div>
+                            </span>
+                        </div>
+                        
                         <div class="work-block__calc-main">
-                        <div class="dop-header" id="dopHeader"></div>
-                        <div class="dop-name" id="dopName"></div>    
+                            <div class="dop-header" id="dopHeader"><img src="img/calc/rvem.png" alt=""></div>
+                            <div class="dop-name" id="dopName"></div> 
+                           
                         </div>
 
+                    </div>
+                    
+                    <div class="work-block__total">
+                        
                     </div>
                     <div class="work-block__bottom"></div>    
                 </div>
@@ -884,9 +891,20 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <script>
     $(document).ready(function(){
         "use strict";
+
+        $("a[href*=\\#]").on("click", function(e){
+            var anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $(anchor.attr('href')).offset().top
+            }, 777);
+            e.preventDefault();
+            return false;
+        });
+
         $(window).scroll(function() {
             if ($(this).scrollTop() > 150){
                 $('header').addClass("header__sticky");
@@ -943,10 +961,14 @@
             textSq = ("площадью " + inp.value + " м2");
             totalTextResult = (totalText_2 + " " + totalText_1 + " " + textSq);            
             $('#totalTextResult').html(totalTextResult);
-
+            
             function activSumm() {
                 activDop_text = "";
+                total_dop = 0;
                 var activDop = $(".dop-item").get();
+                var calcResult = document.getElementById("calcResult");
+                var inp = document.getElementById("inId");
+                calcResult = inp.value * ($('#ubType').val());
                 $(activDop).each(function(){
                    if ($(this).hasClass('active')) {
                         dp_cost = parseInt($(this).children(".dp-item-cost").text());
@@ -955,123 +977,113 @@
                         input = $(this).find(".dp-item__input");
                         inputVal = parseInt(input.val());
                         summ = dp_cost * inputVal;
-                       dopHeader = '<h5>Схема окон:</h5>';
-                       activDop_text = activDop_text + '<div class=dop-name__left>' + dp_name +
+                        dopHeader = '<h5>Дополнительные работы:</h5>';
+                        activDop_text = activDop_text + '<div class=dop-name__left>' + dp_name +
                         ' - ( ' + inputVal + ' ' + dp_edIzm +' )</div><div class="dop-name__right">- ' + summ + 
                         ' \u20BD</div>';
+                        total_dop += isNaN(parseInt(summ)) ? 0 : parseInt(summ);
+                        
                    }
                    
                 });
+                    calcResult = isNaN(parseInt(calcResult)) ? 0 : parseInt(calcResult);
+                    total_price = total_dop + calcResult;
+                   console.log(total_dop);
+                $('.work-block__total').html('К оплате: <span>' + total_price + '</span> рублей');
                 $("#dopHeader").html(dopHeader);
                 $('#dopName').html(activDop_text);
             };
 
-            $('#dop input:checkbox').click(function(){
-                dopResult = '';
-                dopHeader = '';
-                $("#dopHeader").html
-                $('#dopName').html = '';
-                var set = $("input[type=checkbox]").get();
-                $(set).each(function(){
-                    if ($(this).is(':checked')) {
-                        dopHeader = '<h5>Дополнительные работы:</h5>';
-                        dopResult =  dopResult + '<div class="dop-name__left">' + $(this).next('label').html() + 
-                        '</div><div class="dop-name__right">- ' + $(this).prop('value') + ' \u20BD</div>';
-                    }
-                });
-                $("#dopName").html(dopResult);
-                $("#dopHeader").html(dopHeader);
-                dopsum();
-            });
+            
             function dopsum() {
                 var total_dop = 0;
                 $('#dop input:checkbox:checked').each(function(){
                     total_dop += isNaN(parseInt($(this).val())) ? 0 : parseInt($(this).val());
                 });
-                //console.log(total_dop);
+                console.log(total_dop);
             };
             var window_list = {
                 "w1":
                 [
-                    {"id":"w_1", "name":"одна створка", "price":"190", "unit":"шт.", "img":"url('img/calc/window/win-1.png')"},
-                    {"id":"w_2", "name":"одна створка с фрамугой", "price":"290", "unit":"шт.", "img":"url('img/calc/window/win-2.png')"},
-                    {"id":"w_3", "name":"две створки", "price":"350", "unit":"шт.", "img":"url('img/calc/window/win-3.png')"},
-                    {"id":"w_4", "name":"две створки с фрамугой", "price":"450", "unit":"шт.", "img":"url('img/calc/window/win-9.png')"},
-                    {"id":"w_5", "name":"три створки", "price":"500", "unit":"шт.", "img":"url('img/calc/window/win-6.png')"},
-                    {"id":"w_6", "name":"три створки с фрамугой", "price":"600", "unit":"шт.", "img":"url('img/calc/window/win-10.png')"},
-                    {"id":"w_7", "name":"балконная дверь", "price":"350", "unit":"шт.", "img":"url('img/calc/window/door.png')"},
-                    {"id":"w_8", "name":"балконная дверь с окном", "price":"550", "unit":"шт.", "img":"url('img/calc/window/dversoknom.png')"},
-                    {"id":"w_9", "name":"балкон (250 р. за створку)", "price":"250", "unit":"шт.", "img":"url('img/calc/window/balkon.png')"},
-                    {"id":"w_10", "name":"не стандартное остекление", "price":"175", "unit":"м2", "img":"url('img/calc/window/nestandart.jpg')"},
-                    {"id":"w_11", "name":"мойка москитных сеток", "price":"100", "unit":"шт.", "img":"url('img/calc/window/moskit.png')"},
-                    {"id":"w_12", "name":"мойка оконных решеток", "price":"200", "unit":"шт.", "img":"url('img/calc/window/reshetka.png')"},
-                    {"id":"w_13", "name":"мойка жалюзи", "price":"250", "unit":"шт.", "img":"url('img/calc/window/zaluzi.png')"},
-                    {"id":"w_14", "name":"мойка стационарных перегородок", "price":"100", "unit":"м2", "img":"url('img/calc/window/peregorodka.png')"}
+                    {"id":"w_1", "name":"одна створка", "price":"190", "unit":"шт.", "img":"url('img/calc/window/win-1.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_2", "name":"одна створка с фрамугой", "price":"290", "unit":"шт.", "img":"url('img/calc/window/win-2.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_3", "name":"две створки", "price":"350", "unit":"шт.", "img":"url('img/calc/window/win-3.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_4", "name":"две створки с фрамугой", "price":"450", "unit":"шт.", "img":"url('img/calc/window/win-9.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_5", "name":"три створки", "price":"500", "unit":"шт.", "img":"url('img/calc/window/win-6.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_6", "name":"три створки с фрамугой", "price":"600", "unit":"шт.", "img":"url('img/calc/window/win-10.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_7", "name":"балконная дверь", "price":"350", "unit":"шт.", "img":"url('img/calc/window/door.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_8", "name":"балконная дверь с окном", "price":"550", "unit":"шт.", "img":"url('img/calc/window/dversoknom.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_9", "name":"балкон (250 р. за створку)", "price":"250", "unit":"шт.", "img":"url('img/calc/window/balkon.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_10", "name":"не стандартное остекление", "price":"175", "unit":"м2", "img":"url('img/calc/window/nestandart.jpg')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_11", "name":"мойка москитных сеток", "price":"100", "unit":"шт.", "img":"url('img/calc/window/moskit.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_12", "name":"мойка оконных решеток", "price":"200", "unit":"шт.", "img":"url('img/calc/window/reshetka.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_13", "name":"мойка жалюзи", "price":"250", "unit":"шт.", "img":"url('img/calc/window/zaluzi.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_14", "name":"мойка стационарных перегородок", "price":"100", "unit":"м2", "img":"url('img/calc/window/peregorodka.png')", "min":"0", "max":"20", "value":"1"}
                 ],
                 "w2":
                 [
-                    {"id":"w_1", "name":"одна створка", "price":"250", "unit":"шт.", "img":"url('img/calc/window/win-1.png')"},
-                    {"id":"w_2", "name":"одна створка с фрамугой", "price":"400", "unit":"шт.", "img":"url('img/calc/window/win-2.png')"},
-                    {"id":"w_3", "name":"две створки", "price":"550", "unit":"шт.", "img":"url('img/calc/window/win-3.png')"},
-                    {"id":"w_4", "name":"две створки с фрамугой", "price":"700", "unit":"шт.", "img":"url('img/calc/window/win-9.png')"},
-                    {"id":"w_5", "name":"три створки", "price":"750", "unit":"шт.", "img":"url('img/calc/window/win-6.png')"},
-                    {"id":"w_6", "name":"три створки с фрамугой", "price":"900", "unit":"шт.", "img":"url('img/calc/window/win-10.png')"},
-                    {"id":"w_7", "name":"балконная дверь", "price":"500", "unit":"шт.", "img":"url('img/calc/window/door.png')"},
-                    {"id":"w_8", "name":"балконная дверь с окном", "price":"750", "unit":"шт.", "img":"url('img/calc/window/dversoknom.png')"},
-                    {"id":"w_9", "name":"балкон (250 р. за створку)", "price":"250", "unit":"шт.", "img":"url('img/calc/window/balkon.png')"},
-                    {"id":"w_10", "name":"не стандартное остекление", "price":"250", "unit":"м2", "img":"url('img/calc/window/nestandart.jpg')"},
-                    {"id":"w_11", "name":"мойка москитных сеток", "price":"150", "unit":"шт.", "img":"url('img/calc/window/moskit.png')"},
-                    {"id":"w_12", "name":"мойка оконных решеток", "price":"200", "unit":"шт.", "img":"url('img/calc/window/reshetka.png')"},
-                    {"id":"w_13", "name":"мойка жалюзи", "price":"250", "unit":"шт.", "img":"url('img/calc/window/zaluzi.png')"},
-                    {"id":"w_14", "name":"мойка стационарных перегородок", "price":"150", "unit":"м2", "img":"url('img/calc/window/peregorodka.png')"}
+                    {"id":"w_1", "name":"одна створка", "price":"250", "unit":"шт.", "img":"url('img/calc/window/win-1.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_2", "name":"одна створка с фрамугой", "price":"400", "unit":"шт.", "img":"url('img/calc/window/win-2.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_3", "name":"две створки", "price":"550", "unit":"шт.", "img":"url('img/calc/window/win-3.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_4", "name":"две створки с фрамугой", "price":"700", "unit":"шт.", "img":"url('img/calc/window/win-9.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_5", "name":"три створки", "price":"750", "unit":"шт.", "img":"url('img/calc/window/win-6.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_6", "name":"три створки с фрамугой", "price":"900", "unit":"шт.", "img":"url('img/calc/window/win-10.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_7", "name":"балконная дверь", "price":"500", "unit":"шт.", "img":"url('img/calc/window/door.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_8", "name":"балконная дверь с окном", "price":"750", "unit":"шт.", "img":"url('img/calc/window/dversoknom.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_9", "name":"балкон (250 р. за створку)", "price":"250", "unit":"шт.", "img":"url('img/calc/window/balkon.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_10", "name":"не стандартное остекление", "price":"250", "unit":"м2", "img":"url('img/calc/window/nestandart.jpg')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_11", "name":"мойка москитных сеток", "price":"150", "unit":"шт.", "img":"url('img/calc/window/moskit.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_12", "name":"мойка оконных решеток", "price":"200", "unit":"шт.", "img":"url('img/calc/window/reshetka.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_13", "name":"мойка жалюзи", "price":"250", "unit":"шт.", "img":"url('img/calc/window/zaluzi.png')", "min":"0", "max":"20", "value":"1"},
+                    {"id":"w_14", "name":"мойка стационарных перегородок", "price":"150", "unit":"м2", "img":"url('img/calc/window/peregorodka.png')", "min":"0", "max":"20", "value":"1"}
                 ],
                 "u1":
                 [
-                    {"id":"u_1", "name":"одна створка", "price":"250", "unit":"шт.", "img":"url('img/calc/window/win-1.png')"},
-                    {"id":"u_2", "name":"одна створка с фрамугой", "price":"400", "unit":"шт.", "img":"url('img/calc/window/win-2.png')"},
-                    {"id":"u_3", "name":"две створки", "price":"550", "unit":"шт.", "img":"url('img/calc/window/win-3.png')"},
-                    {"id":"u_4", "name":"две створки с фрамугой", "price":"700", "unit":"шт.", "img":"url('img/calc/window/win-9.png')"},
-                    {"id":"u_5", "name":"три створки", "price":"750", "unit":"шт.", "img":"url('img/calc/window/win-6.png')"},
-                    {"id":"u_6", "name":"три створки с фрамугой", "price":"900", "unit":"шт.", "img":"url('img/calc/window/win-10.png')"},
-                    {"id":"u_7", "name":"балконная дверь", "price":"500", "unit":"шт.", "img":"url('img/calc/window/door.png')"},
-                    {"id":"u_8", "name":"балконная дверь с окном", "price":"750", "unit":"шт.", "img":"url('img/calc/window/dversoknom.png')"},
-                    {"id":"u_9", "name":"балкон (250 р. за створку)", "price":"250", "unit":"шт.", "img":"url('img/calc/window/balkon.png')"},
-                    {"id":"u_10", "name":"не стандартное остекление", "price":"250", "unit":"м2", "img":"url('img/calc/window/nestandart.jpg')"},
-                    {"id":"u_11", "name":"мойка москитных сеток", "price":"150", "unit":"шт.", "img":"url('img/calc/window/moskit.png')"},
-                    {"id":"u_12", "name":"мойка оконных решеток", "price":"200", "unit":"шт.", "img":"url('img/calc/window/reshetka.png')"},
-                    {"id":"u_13", "name":"мойка жалюзи", "price":"250", "unit":"шт.", "img":"url('img/calc/window/zaluzi.png')"}
+                    {"id":"u_1", "name":"доставить ключи", "price":"500", "unit":"шт.", "img":"url('img/calc/dop/additional-5.png')", "input-wrapper":"off", "value":"1"},
+                    {"id":"u_2", "name":"помыть холодильник", "price":"450", "unit":"шт.", "img":"url('img/calc/dop/additional-6.png')", "input-wrapper":"off", "value":"1"},
+                    {"id":"u_3", "name":"помыть духовку", "price":"450", "unit":"шт.", "img":"url('img/calc/dop/additional-7.png')", "input-wrapper":"off", "value":"1"},
+                    {"id":"u_4", "name":"помыть СВЧ печь", "price":"250", "unit":"шт.", "img":"url('img/calc/dop/additional-10.png')", "input-wrapper":"off", "value":"1"},
+                    {"id":"u_5", "name":"помыть внутри кухонных шкафов", "price":"500", "unit":"шт.", "img":"url('img/calc/dop/additional-8.png')", "input-wrapper":"off", "value":"1"},
+                    {"id":"u_6", "name":"помыть посуду (10р./1мин.)", "price":"10", "unit":"мин.", "img":"url('img/calc/dop/additional-9.png')", "input-wrapper":"on", "min":"10", "max":"60", "value":"10"},
+                    {"id":"u_7", "name":"глажка белья", "price":"500", "unit":"час", "img":"url('img/calc/dop/additional-0.png')", "input-wrapper":"on", "min":"0", "max":"5", "value":"1"},
+                    {"id":"u_8", "name":"помыть люстру (300р./1шт.)", "price":"300", "unit":"шт.", "img":"url('img/calc/dop/additional-1.png')", "input-wrapper":"on", "min":"0", "max":"5", "value":"1"},
+                    {"id":"u_9", "name":"химчистка ковров (от 75р./м2)", "price":"75", "unit":"м2", "img":"url('img/calc/dop/kover.png')", "input-wrapper":"on", "min":"0", "max":"50", "value":"4"},
+                    {"id":"u_10", "name":"химчистка штор (от 250р./м2)", "price":"250", "unit":"м2", "img":"url('img/calc/dop/shtori.png')", "input-wrapper":"on", "min":"0", "max":"50", "value":"1"},
+                    {"id":"u_11", "name":"химчистка теканевой мебели от 200", "price":"", "unit":"шт.", "img":"url('img/calc/dop/additional-12.png')", "input-wrapper":"off", "value":"1"},
+                    {"id":"u_12", "name":"химчистка кожаной мебели от 450", "price":"", "unit":"шт.", "img":"url('img/calc/dop/additional-13.png')", "input-wrapper":"off", "value":"1"},
+                    {"id":"u_13", "name":"сезонная мойка окон от 190", "price":"", "unit":"шт.", "img":"url('img/calc/dop/additional-3.png')", "input-wrapper":"off", "value":"1"}
                 ]
             };
             var ubType_list = {
                 
                 "fz1":
                 [
-                    {"price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"40", "max":"300", "value":"40"},
-                    {"price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"40", "max":"300", "value":"40"}, 
-                    {"price":"125", "name":"послестроительная", "text":"Уборка после ремонта", "min":"40", "max":"300", "value":"40"}
+                    {"id":"u1", "price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"40", "max":"300", "value":"40"},
+                    {"id":"u2", "price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"40", "max":"300", "value":"40"}, 
+                    {"id":"u3", "price":"125", "name":"послестроительная", "text":"Уборка после ремонта", "min":"40", "max":"300", "value":"40"}
                 ],
                 
                 "fz2": [
-                    {"price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"40", "max":"300", "value":"40"},
-                    {"price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"40", "max":"300", "value":"40"}
+                    {"id":"u1", "price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"40", "max":"300", "value":"40"},
+                    {"id":"u2", "price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"40", "max":"300", "value":"40"}
                 ],
                 "fz3": [
-                    {"price":"50", "name":"квартиры", "text":"Уборка квартиры", "min":"40", "max":"300", "value":"40"},
-                    {"price":"90", "name":"коттеджа/дома", "text":"Уборка коттеджа или дома", "min":"100", "max":"1000", "value":"100"}
+                    {"id":"u1", "price":"50", "name":"квартиры", "text":"Уборка квартиры", "min":"40", "max":"300", "value":"40"},
+                    {"id":"u1", "price":"90", "name":"коттеджа/дома", "text":"Уборка коттеджа или дома", "min":"100", "max":"1000", "value":"100"}
                 ],
                 "fz4": [
                     {"id":"w1", "name":"сезонная", "text":"Сезонная мойка"},
                     {"id":"w2", "name":"послестроительная", "text":"После ремонта"}
                 ],
                 "fz5": [
-                    {"price":"", "name":"текстильной мебели", "text":"Текстильная мебель"},
-                    {"price":"", "name":"коттеджа/дома", "text":"Кожанная мебель"}
+                    {"id":"h1", "price":"", "name":"текстильной мебели", "text":"Текстильная мебель"},
+                    {"id":"h2", "price":"", "name":"коттеджа/дома", "text":"Кожанная мебель"}
                 ],
                 "fz6":
                 [
-                    {"price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"100", "max":"1000", "value":"100"},
-                    {"price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"100", "max":"1000", "value":"100"}, 
-                    {"price":"125", "name":"послестроительная", "text":"Уборка после ремонта", "min":"100", "max":"1000", "value":"100"}
+                    {"id":"u1", "price":"50", "name":"поддерживающая", "text":"Поддерживающая уборка", "min":"100", "max":"1000", "value":"100"},
+                    {"id":"u2", "price":"90", "name":"генеральная", "text":"Генеральная уборка", "min":"100", "max":"1000", "value":"100"}, 
+                    {"id":"u3", "price":"125", "name":"послестроительная", "text":"Уборка после ремонта", "min":"100", "max":"1000", "value":"100"}
                 ],
             };
 
@@ -1090,6 +1102,16 @@
                     
                 $.each(ubType_list, function(key, data){
                     if (key == madType_id) {
+                        if (madType_id == "fz4") {
+                        $('#dop').css("display", "none");
+                        $('#slide').css("display", "none");
+                        $('#window').css("display", "flex");
+                    }
+                    else {
+                        $('#dop').css("display", "flex");
+                        $('#slide').css("display", "flex");
+                        $('#window').css("display", "flex");
+                    }
                         $.each(data, function(key, value){ 
                             //console.log('select price = ' + value['price'] + '; ' + 'name = ' + value['name'] + '; ' + value['text']);
                             $('#ubType').append('<option value="' + value['price'] + '" name="' + value['name'] + '"id="' + value['id'] + '">' + value['text'] + '</option>');
@@ -1099,11 +1121,7 @@
                         });
                     }
                 });
-                if (madType_id == "fz4") {
-                        $('#dop').css("display", "none");
-                        $('#slide').css("display", "none");
-                        $('#window').css("display", "flex");
-                    }
+                
                 $('#ubType').prop('disabled', false)
                 Update();
                 vidUborki();
@@ -1127,16 +1145,21 @@
                             $('#total').html("");
                         }
                         $.each(data, function(key, value)  {
+                            
                             $('.form-window').append(
                                 '<div data-type="window" class="dop-item dp" style="background-image: ' + value['img'] + '">'+
                                 '<span class="dp-item-name">'+ value['name'] +'</span><br><span class="dp-item-cost">'+ value['price'] +' руб.</span>'+
                                 '<span class="dp-item-edIzm-hidden hidden">'+ value['unit'] +'</span>' +
+                                '<span class="dp-item-wrapper-hidden hidden">' + value['input-wrapper'] + '</span>' +
                                 '<div class="input-wrapper">'+
                                 '<a class="dp-item__button window__button--prew button__prew" data-type="minus" data-field="'+ value['id'] +'"></a>'+
-                                '<input type="text" name="'+ value['id'] +'" value="1" class="dp-item__input" min="0" max="20">'+
+                                '<input type="text" name="'+ value['id'] +'" value="' + value['value'] + '" class="dp-item__input" min="' + value['min'] + '" max="' + value['max'] + '">'+
                                 '<a class="dp-item__button window__button--next  button__next" data-type="plus" data-field="'+ value['id'] +'"></a>'+
-                                '</div></div>'
+                                '</div>' +
+                                '</div>'
+                                
                             );
+                            
                     });
                     }
                 });
@@ -1145,7 +1168,9 @@
                     target.toggleClass('active');
                     if ($(this).hasClass('active')) {
                         activSumm();
-                        if (target.children('.input-wrapper').length > 0) { 
+                        if (target.children('.dp-item-wrapper-hidden').text() == 'off') { 
+                            //console.log('скрыть');
+                            target.children('.input-wrapper').css("visibility", "hidden");
                         }
                         else return
                     }

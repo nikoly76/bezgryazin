@@ -1092,7 +1092,6 @@ a[disabled] {
 .form__window .dop-item .dp-item-cost {
   font-size: 13px;
   font-family: 'ProximaNova-Bold', sans-serif;
-  color: #018644;
   -webkit-transition: all .25s ease-in-out;
   transition: all .25s ease-in-out;
 }
@@ -1186,6 +1185,7 @@ a[disabled] {
   background: #ffffff;
   min-height: 100px;
   padding-right: 20px;
+  padding-bottom: 30px;
 }
 
 .work-block__calc-header {
@@ -1195,6 +1195,21 @@ a[disabled] {
   padding-right: 20px;
   font-size: 16px;
   font-family: 'ProximaNova-Bold', sans-serif;
+}
+
+.work-block__total {
+  background: #ffffff;
+  width: 100%;
+  min-height: 50px;
+  font-family: 'ProximaNova-Bold', sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.work-block__total span {
+  font-size: 28px;
+  color: #018644;
 }
 
 .work-block__bottom {
